@@ -16,12 +16,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late Animation _animation;
   AnimationStatus _status = AnimationStatus.dismissed;
   var randomMessage = "";
+  var randomImages = "";
   var messages = [
     "This holiday season, let’s make it a point to cherish what’s truly important in our lives: cookies.",
-    "I told Santa you were good this year and sent him a link to your Pinterest board. Merry Christmas to you!"
-        "This Christmas, may your family be functional and all your batteries be included.",
-    "Merry Christmas! I put so much thought into your gift that now it's too late to get it."
-        "Please note: Christmas is canceled. Apparently, you told Santa you have been good this year … he died laughing.",
+    "I told Santa you were good this year and sent him a link to your Pinterest board. Merry Christmas to you!",
+    "This Christmas, may your family be functional and all your batteries be included.",
+    "Merry Christmas! I put so much thought into your gift that now it's too late to get it.",
+    "Please note: Christmas is canceled. Apparently, you told Santa you have been good this year … he died laughing.",
     "Is it just me, or does Santa look younger every year?",
     "Eat. Drink. Be Merry. Have a wonderful Christmas!",
     "Christmas is the only time of year in which one can sit in front of a dead tree and eat candy out of socks. Enjoy!",
@@ -30,7 +31,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     "Wishing you a season full of light and laughter for you and your family.",
     "Best wishes for a joyous Christmas filled with love, happiness and prosperity!",
   ];
-  var rng = Random();
+  var images = [
+    "images/c1.jpeg",
+    "images/c2.jpeg",
+    "images/c3.jpeg",
+    "images/c4.jpeg",
+    "images/c5.jpeg",
+    "images/c6.jpeg",
+    "images/c7.jpeg",
+    "images/c8.jpeg",
+    "images/c9.jpeg",
+    "images/c10.jpeg",
+    "images/tree2.png",
+  ];
 
   @override
   void initState() {
@@ -41,16 +54,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _animation = Tween(end: 1.0, begin: 0.0).animate(_controller)
       ..addListener(() {
         setState(() {
-          int index = rng.nextInt(messages.length);
-
 // Get the item at the random index
-
-          randomMessage = (messages..shuffle()).first;
         });
       })
       ..addStatusListener((status) {
         _status = status;
       });
+
     super.initState();
   }
 
@@ -78,6 +88,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ..setEntry(3, 2, 0.0015)
                 ..rotateY(pi * _animation.value),
               child: Card(
+                elevation: 5.0,
                 child: _animation.value <= 0.5
                     ? Container(
                         color: Colors.white,
@@ -105,11 +116,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           child: Transform(
                             alignment: FractionalOffset.center,
                             transform: Matrix4.identity()
-                              ..setEntry(2, 1, 0.0015)
+                              ..setEntry(2, 1, 0.0013)
                               ..rotateY(pi * _animation.value),
                             child: Column(
                               children: [
-                                Image.asset("images/tree2.png"),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset(
+                                    randomImages,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
@@ -134,6 +151,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               } else {
                 _controller.reverse();
               }
+              setState(() {
+                var rng = new Random();
+
+// Generate a random index
+                int index = rng.nextInt(images.length);
+                int sindex = rng.nextInt(messages.length);
+
+// Get the item at the random index
+                randomImages = images[index];
+                randomMessage = messages[sindex];
+
+                // randomMessage = (messages..shuffle()).first;
+                // randomImages = (images..shuffle()).first;
+              });
             },
             child: const Text("Flip Card"),
           )
