@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flipper/model/cardmodel.dart';
 import 'package:flutter/material.dart';
 
 //Extends state with SingleTinker provider state mixin
@@ -17,6 +18,57 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   AnimationStatus _status = AnimationStatus.dismissed;
   var randomMessage = "";
   var randomImages = "";
+  // ignore: prefer_final_fields
+  List<CardModel> _cards = [
+    CardModel(
+      "This holiday season, let’s make it a point to cherish what’s truly important in our lives: cookies",
+      "images/c1.jpeg",
+    ),
+    CardModel(
+        "Best wishes for a joyous Christmas filled with love, happiness and prosperity!",
+        "images/c2.jpeg"),
+    CardModel(
+      "Wishing you a season full of light and laughter for you and your family.",
+      "images/c3.jpeg",
+    ),
+    CardModel(
+      "The gift of love. The gift of peace. The gift of happiness. May all these be yours at Christmas.",
+      "images/c4.jpeg",
+    ),
+    CardModel(
+        "Merry Christmas! I put so much thought into your gift that now it's too late to get it.",
+        "images/c5.jpeg"),
+    CardModel("Is it just me, or does Santa look younger every year?",
+        "images/c6.jpeg"),
+    CardModel(
+        "Eat. Drink. Be Merry. Have a wonderful Christmas!", "images/c7.jpeg"),
+    CardModel(
+        "Christmas is the only time of year in which one can sit in front of a dead tree and eat candy out of socks. Enjoy!",
+        "images/c8.jpeg"),
+    CardModel(
+        "May the Christmas Season bring only happiness and joy to you and your family.",
+        "images/c9.jpeg"),
+    CardModel(
+        "The gift of love. The gift of peace. The gift of happiness. May all these be yours at Christmas.",
+        "images/c10.jpeg"),
+    CardModel(
+        "May all that is beautiful, meaningful and brings you joy be yours this holiday season and throughout the coming year!",
+        "images/c11.jpeg"),
+    CardModel(
+        "Merry Christmas! Wishing you all the happiness your holiday can hold!",
+        "images/c12.jpeg"),
+    CardModel(
+        "May your holidays sparkle with joy and laughter.", "images/c13.jpeg"),
+    CardModel(
+        "I hope the magic of Christmas fills every corner of your heart and home with joy — now and always.",
+        "images/c14.jpeg"),
+    CardModel(
+        "Our family wishes you love, joy and peace … today, tomorrow and always.",
+        "images/c15.jpeg"),
+    CardModel(
+        "May your family have a holiday season that is full of wonderful surprises, treats and nonstop laughter.",
+        "images/c16.jpeg"),
+  ];
   var messages = [
     "This holiday season, let’s make it a point to cherish what’s truly important in our lives: cookies.",
     "I told Santa you were good this year and sent him a link to your Pinterest board. Merry Christmas to you!",
@@ -30,6 +82,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     "The gift of love. The gift of peace. The gift of happiness. May all these be yours at Christmas.",
     "Wishing you a season full of light and laughter for you and your family.",
     "Best wishes for a joyous Christmas filled with love, happiness and prosperity!",
+    "May your family have a holiday season that is full of wonderful surprises, treats and nonstop laughter.",
+    "Our family wishes you love, joy and peace … today, tomorrow and always.",
+    "I hope the magic of Christmas fills every corner of your heart and home with joy — now and always.",
+    "May your holidays sparkle with joy and laughter.",
   ];
   var images = [
     "images/c1.jpeg",
@@ -42,6 +98,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     "images/c8.jpeg",
     "images/c9.jpeg",
     "images/c10.jpeg",
+    "images/c11.jpeg",
+    "images/c12.jpeg",
+    "images/c13.jpeg",
+    "images/c14.jpeg",
+    "images/c15.jpeg",
+    "images/c16.jpeg",
     "images/tree2.png",
   ];
 
@@ -155,15 +217,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 var rng = new Random();
 
 // Generate a random index
-                int index = rng.nextInt(images.length);
-                int sindex = rng.nextInt(messages.length);
+                // int index = rng.nextInt(_cards.length);
+                // int sindex = rng.nextInt(messages.length);
 
 // Get the item at the random index
-                randomImages = images[index];
-                randomMessage = messages[sindex];
+                // randomImages = _cards[index].image;
+                // // randomMessage = _cards[index].text;
 
-                // randomMessage = (messages..shuffle()).first;
-                // randomImages = (images..shuffle()).first;
+                randomMessage = (messages..shuffle()).first;
+                randomImages = (images..shuffle()).first;
               });
             },
             child: const Text("Flip Card"),
@@ -173,3 +235,4 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 }
+//TODO: add mp3, change fonts, map each message to image, replace long messages with short messages
