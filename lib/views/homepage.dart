@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flipper/model/cardmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 //Extends state with SingleTinker provider state mixin
 class HomePage extends StatefulWidget {
@@ -140,9 +142,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       body: Center(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          Container(
+            // color: Colors.teal,
+            child: Lottie.network(
+                "https://assets9.lottiefiles.com/packages/lf20_vrbtloig.json",
+                width: 300,
+                height: 150),
+          ),
           const SizedBox(
-            height: 30,
+            height: 10,
           ),
           Transform(
               alignment: FractionalOffset.center,
@@ -194,8 +204,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   child: Text(
                                     randomMessage,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 16, color: Colors.red),
+                                    style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                            fontSize: 16, color: Colors.red)),
                                   ),
                                 ),
                               ],
@@ -204,7 +215,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         )),
               )),
           const SizedBox(
-            height: 30,
+            height: 5,
           ),
           ElevatedButton(
             onPressed: () {
@@ -235,4 +246,4 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 }
-//TODO: add mp3, change fonts, map each message to image, replace long messages with short messages
+//TODO: add mp3, replace long messages with short messages
