@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flipper/model/cardmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   //set up controllers
   late AnimationController _controller;
   late Animation _animation;
+  final audioPlayer = AudioPlayer();
   AnimationStatus _status = AnimationStatus.dismissed;
   var randomMessage = "";
   var randomImages = "";
@@ -107,6 +109,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     "images/c15.jpeg",
     "images/c16.jpeg",
     "images/tree2.png",
+    'images/tree.png',
   ];
 
   @override
@@ -133,9 +136,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text(
+        title: Text(
           "Seasons Greetings",
-          style: TextStyle(color: Colors.black),
+          style: GoogleFonts.poppins(textStyle: TextStyle(color: Colors.black)),
         ),
         backgroundColor: Colors.transparent,
       ),
@@ -147,12 +150,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           Container(
             // color: Colors.teal,
             child: Lottie.network(
-                "https://assets9.lottiefiles.com/packages/lf20_vrbtloig.json",
+                "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
                 width: 300,
-                height: 150),
+                height: 100),
           ),
           const SizedBox(
-            height: 10,
+            height: 30,
           ),
           Transform(
               alignment: FractionalOffset.center,
@@ -168,13 +171,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         height: 500,
                         child: Column(
                           children: [
-                            Image.asset("images/tree.png"),
-                            const Center(
+                            // Image.asset("images/tree.png"),
+                            Lottie.network(
+                                "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
+                                width: 500,
+                                height: 300),
+
+                            Center(
                               child: Text(
                                 "Merry Christmas",
                                 textAlign: TextAlign.center,
-                                style:
-                                    TextStyle(fontSize: 40, color: Colors.red),
+                                style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
+                                        fontSize: 40, color: Colors.red)),
                               ),
                             ),
                           ],
@@ -215,14 +224,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         )),
               )),
           const SizedBox(
-            height: 5,
+            height: 10,
           ),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
+              var url =
+                  "https://www.chosic.com/wp-content/uploads/2020/06/United_States_Marine_Band_-_We_Wish_You_a_Merry_Christmas.mp3";
+              print('play');
+
               if (_status == AnimationStatus.dismissed) {
                 _controller.forward();
+                await audioPlayer.play(UrlSource(url));
               } else {
                 _controller.reverse();
+                await audioPlayer.pause();
               }
               setState(() {
                 var rng = new Random();
