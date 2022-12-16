@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flipper/model/cardmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -20,8 +21,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late Animation _animation;
   final audioPlayer = AudioPlayer();
   AnimationStatus _status = AnimationStatus.dismissed;
-  var randomMessage = "";
-  var randomImages = "";
+  var randomMessage =
+      "Best wishes for a joyous Christmas filled with love, happiness and prosperity!";
+  var randomImages = "images/c2.jpeg";
   // ignore: prefer_final_fields
   List<CardModel> _cards = [
     CardModel(
@@ -142,123 +144,130 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         backgroundColor: Colors.transparent,
       ),
-      body: Center(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            // color: Colors.teal,
-            child: Lottie.network(
-                "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
-                width: 300,
-                height: 100),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Transform(
-              alignment: FractionalOffset.center,
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.0015)
-                ..rotateY(pi * _animation.value),
-              child: Card(
-                elevation: 5.0,
-                child: _animation.value <= 0.5
-                    ? Container(
-                        color: Colors.white,
-                        width: 300,
-                        height: 500,
-                        child: Column(
-                          children: [
-                            // Image.asset("images/tree.png"),
-                            Lottie.network(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Container(
+                // color: Colors.teal,
+                child: Lottie.network(
+                    "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
+                    width: 300.w,
+                    height: 100.h),
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Transform(
+                alignment: FractionalOffset.center,
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.0015)
+                  ..rotateY(pi * _animation.value),
+                child: Card(
+                  elevation: 5.0,
+                  child: _animation.value <= 0.5
+                      ? Container(
+                          color: Colors.white,
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          child: Column(
+                            children: [
+                              // Image.asset("images/tree.png"),
+                              Lottie.network(
                                 "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
-                                width: 500,
-                                height: 300),
+                              ),
 
-                            Center(
-                              child: Text(
-                                "Merry Christmas",
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                        fontSize: 40, color: Colors.red)),
+                              Center(
+                                child: Text(
+                                  "Merry Christmas",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          fontSize: 20.sp, color: Colors.red)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          color: Colors.white,
+                          child: Center(
+                            child: Transform(
+                              alignment: FractionalOffset.center,
+                              transform: Matrix4.identity()
+                                ..setEntry(2, 1, 0.0013)
+                                ..rotateY(pi * _animation.value),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    randomImages,
+                                  ),
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      randomMessage,
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.03,
+                                              color: Colors.red)),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
-                      )
-                    : Container(
-                        width: 300,
-                        height: 500,
-                        color: Colors.white,
-                        child: Center(
-                          child: Transform(
-                            alignment: FractionalOffset.center,
-                            transform: Matrix4.identity()
-                              ..setEntry(2, 1, 0.0013)
-                              ..rotateY(pi * _animation.value),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset(
-                                    randomImages,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    randomMessage,
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                            fontSize: 16, color: Colors.red)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )),
-              )),
-          const SizedBox(
-            height: 10,
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              var url =
-                  "https://www.chosic.com/wp-content/uploads/2020/06/United_States_Marine_Band_-_We_Wish_You_a_Merry_Christmas.mp3";
-              print('play');
+                          )),
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                var url =
+                    "https://www.chosic.com/wp-content/uploads/2020/06/United_States_Marine_Band_-_We_Wish_You_a_Merry_Christmas.mp3";
+                print('play');
 
-              if (_status == AnimationStatus.dismissed) {
-                _controller.forward();
-                await audioPlayer.play(UrlSource(url));
-              } else {
-                _controller.reverse();
-                await audioPlayer.pause();
-              }
-              setState(() {
-                var rng = new Random();
+                if (_status == AnimationStatus.dismissed) {
+                  _controller.forward();
+                  await audioPlayer.play(UrlSource(url));
+                } else {
+                  _controller.reverse();
+                  await audioPlayer.pause();
+                }
+                setState(() {
+                  var rng = new Random();
 
-// Generate a random index
-                // int index = rng.nextInt(_cards.length);
-                // int sindex = rng.nextInt(messages.length);
+                  // Generate a random index
+                  // int index = rng.nextInt(_cards.length);
+                  // int sindex = rng.nextInt(messages.length);
 
-// Get the item at the random index
-                // randomImages = _cards[index].image;
-                // // randomMessage = _cards[index].text;
+                  // Get the item at the random index
+                  // randomImages = _cards[index].image;
+                  // // randomMessage = _cards[index].text;
 
-                randomMessage = (messages..shuffle()).first;
-                randomImages = (images..shuffle()).first;
-              });
-            },
-            child: const Text("Flip Card"),
-          )
-        ],
-      )),
+                  randomMessage = (messages..shuffle()).first;
+                  randomImages = (images..shuffle()).first;
+                });
+              },
+              child: const Text("Flip Card"),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
-//TODO: add mp3, replace long messages with short messages
+//TODO: build for web; mobile display, replace long messages with short messages and 10 more messages and images
