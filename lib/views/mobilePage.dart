@@ -8,14 +8,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 //Extends state with SingleTinker provider state mixin
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class MobilePage extends StatefulWidget {
+  const MobilePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MobilePage> createState() => _MobilePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
   //set up controllers
   late AnimationController _controller;
   late Animation _animation;
@@ -149,15 +149,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: Container(
-                // color: Colors.teal,
-                child: Lottie.network(
-                    "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
-                    width: 300.w,
-                    height: 100.h),
-              ),
-            ),
+            // Center(
+            //   child: Container(
+            //     // color: Colors.teal,
+            //     child: Lottie.network(
+            //         "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
+            //         width: 300.w,
+            //         height: 100.h),
+            //   ),
+            // ),
             SizedBox(
               height: 10.h,
             ),
@@ -176,9 +176,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           child: Column(
                             children: [
                               // Image.asset("images/tree.png"),
-                              Lottie.network(
-                                "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
-                              ),
+                              // Lottie.network(
+                              //   "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
+                              // ),
 
                               Center(
                                 child: Text(
