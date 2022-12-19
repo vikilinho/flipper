@@ -149,15 +149,15 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Center(
-            //   child: Container(
-            //     // color: Colors.teal,
-            //     child: Lottie.network(
-            //         "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
-            //         width: 300.w,
-            //         height: 100.h),
-            //   ),
-            // ),
+            Center(
+              child: Container(
+                // color: Colors.teal,
+                child: Lottie.network(
+                    "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
+                    width: 300.w,
+                    height: 100.h),
+              ),
+            ),
             SizedBox(
               height: 10.h,
             ),
@@ -175,11 +175,10 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
                           height: MediaQuery.of(context).size.height * 0.5,
                           child: Column(
                             children: [
-                              // Image.asset("images/tree.png"),
-                              // Lottie.network(
-                              //   "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
-                              // ),
-
+                              Image.asset("images/tree.png"),
+                              Lottie.network(
+                                "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
+                              ),
                               Center(
                                 child: Text(
                                   "Merry Christmas",

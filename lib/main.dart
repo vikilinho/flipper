@@ -28,14 +28,16 @@ class MyApp extends StatelessWidget {
       ]);
       {
         return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.teal,
-          ),
-          // home: const ResponsivePage(
-          //   mobilePage: MobilePage(), desktopPage: DesktopPage(), tabletPage: TabletPage(),
-          home: TabletPage(),
-        );
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: Colors.teal,
+            ),
+            home: const ResponsivePage(
+                mobilePage: MobilePage(),
+                desktopPage: DesktopPage(),
+                tabletPage: TabletPage())
+            // home: TabletPage(),
+            );
       }
     });
   }
