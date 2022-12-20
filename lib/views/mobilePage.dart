@@ -179,16 +179,16 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(
-              flex: 1,
-              child: Center(
-                child: Container(
-                  // color: Colors.teal,
-                  child: Lottie.asset("images/xmessage.json",
-                      width: 400.w, height: 100.h),
-                ),
-              ),
-            ),
+            // Flexible(
+            //   flex: 1,
+            //   child: Center(
+            //     child: Container(
+            //       // color: Colors.teal,
+            //       child: Lottie.asset("images/xmessage.json",
+            //           width: 400.w, height: 100.h),
+            //     ),
+            //   ),
+            // ),
             Transform(
                 alignment: FractionalOffset.center,
                 transform: Matrix4.identity()
@@ -204,10 +204,24 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
                             height: MediaQuery.of(context).size.height * 0.65,
                             child: Column(
                               children: [
+                                // Flexible(
+                                //   flex: 2,
+                                //   child: Lottie.asset(
+                                //     "images/xtree.json",
+                                //   ),
+                                // ),
                                 Flexible(
-                                  flex: 2,
-                                  child: Lottie.asset(
-                                    "images/xtree.json",
+                                  flex: 3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset(
+                                      "images/d1.jpeg",
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.6,
+                                    ),
                                   ),
                                 ),
                                 Flexible(
