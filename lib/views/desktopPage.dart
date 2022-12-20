@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class DesktopPage extends StatefulWidget {
   const DesktopPage({super.key});
@@ -181,8 +182,15 @@ class _DesktopPageState extends State<DesktopPage>
             //         height: 100.h),
             //   ),
             // ),
-            SizedBox(
-              height: 10.h,
+            Flexible(
+              flex: 2,
+              child: Center(
+                child: Lottie.asset(
+                  "images/xmessage.json",
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  height: MediaQuery.of(context).size.height * 0.6,
+                ),
+              ),
             ),
             Transform(
                 alignment: FractionalOffset.center,
@@ -200,7 +208,7 @@ class _DesktopPageState extends State<DesktopPage>
                             child: Column(
                               children: [
                                 Flexible(
-                                  flex: 1,
+                                  flex: 3,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Image.asset(
@@ -217,14 +225,17 @@ class _DesktopPageState extends State<DesktopPage>
                                 //   "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
                                 // ),
 
-                                Center(
-                                  child: Text(
-                                    "Merry Christmas",
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                            fontSize: 20.sp,
-                                            color: Colors.red)),
+                                Flexible(
+                                  flex: 1,
+                                  child: Center(
+                                    child: Text(
+                                      "Merry Christmas",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              fontSize: 16.sp,
+                                              color: Colors.red)),
+                                    ),
                                   ),
                                 ),
                               ],

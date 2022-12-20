@@ -184,10 +184,8 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
               child: Center(
                 child: Container(
                   // color: Colors.teal,
-                  child: Lottie.network(
-                      "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
-                      width: 400.w,
-                      height: 100.h),
+                  child: Lottie.asset("images/xmessage.json",
+                      width: 400.w, height: 100.h),
                 ),
               ),
             ),
@@ -208,8 +206,8 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
                               children: [
                                 Flexible(
                                   flex: 2,
-                                  child: Lottie.network(
-                                    "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
+                                  child: Lottie.asset(
+                                    "images/xtree.json",
                                   ),
                                 ),
                                 Flexible(
