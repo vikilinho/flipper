@@ -215,7 +215,7 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Image.asset(
-                                      "images/d1.jpeg",
+                                      "images/tree.png",
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
                                       height:
