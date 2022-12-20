@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class MobilePage extends StatefulWidget {
   const MobilePage({super.key});
@@ -75,6 +76,12 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
         "May your family have a holiday season that is full of wonderful surprises, treats and nonstop laughter.",
         "images/c16.jpeg"),
   ];
+  playSound() async {
+    var url =
+        "https://www.chosic.com/wp-content/uploads/2020/06/United_States_Marine_Band_-_We_Wish_You_a_Merry_Christmas.mp3";
+    await audioPlayer.play(UrlSource(url));
+  }
+
   var messages = [
     "Merry Christmas! I put so much thought into your gift that now it's too late to get it.",
     "Eat. Drink. Be Merry. Have a wonderful Christmas!",
@@ -133,6 +140,7 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
   @override
   void initState() {
     //initialise the animation controller
+    playSound();
 
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 1));
@@ -158,7 +166,7 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "Seasons Greetings",
+            "Season's Greetings",
             style: GoogleFonts.poppins(
                 textStyle: TextStyle(color: Colors.black, fontSize: 20.sp)),
           ),
@@ -171,17 +179,17 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Center(
-            //   child: Container(
-            //     // color: Colors.teal,
-            //     child: Lottie.network(
-            //         "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
-            //         width: 300.w,
-            //         height: 100.h),
-            //   ),
-            // ),
-            SizedBox(
-              height: 10.h,
+            Flexible(
+              flex: 1,
+              child: Center(
+                child: Container(
+                  // color: Colors.teal,
+                  child: Lottie.network(
+                      "https://assets4.lottiefiles.com/packages/lf20_Qu68m487iG.json",
+                      width: 400.w,
+                      height: 100.h),
+                ),
+              ),
             ),
             Transform(
                 alignment: FractionalOffset.center,
@@ -195,35 +203,26 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
                         ? Container(
                             color: Colors.white,
                             width: MediaQuery.of(context).size.width * 0.8,
-                            height: MediaQuery.of(context).size.height * 0.75,
+                            height: MediaQuery.of(context).size.height * 0.65,
                             child: Column(
                               children: [
                                 Flexible(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Image.asset(
-                                      "images/d1.jpeg",
-                                      width: MediaQuery.of(context).size.width *
-                                          0.6,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.6,
-                                    ),
+                                  flex: 2,
+                                  child: Lottie.network(
+                                    "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
                                   ),
                                 ),
-                                // Lottie.network(
-                                //   "https://assets4.lottiefiles.com/packages/lf20_ojYQlpe8pq.json",
-                                // ),
-
-                                Center(
-                                  child: Text(
-                                    "Merry Christmas",
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                            fontSize: 20.sp,
-                                            color: Colors.red)),
+                                Flexible(
+                                  flex: 1,
+                                  child: Center(
+                                    child: Text(
+                                      "Merry Christmas",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              fontSize: 20.sp,
+                                              color: Colors.red)),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -231,7 +230,7 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
                           )
                         : Container(
                             width: MediaQuery.of(context).size.width * 0.8,
-                            height: MediaQuery.of(context).size.height * 0.75,
+                            height: MediaQuery.of(context).size.height * 0.65,
                             color: Colors.white,
                             child: Center(
                               child: Transform(
@@ -258,18 +257,21 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
                                     SizedBox(
                                       height: 10.h,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        randomMessage,
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                                fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.03,
-                                                color: Colors.red)),
+                                    Flexible(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          randomMessage,
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              textStyle: TextStyle(
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                          0.04,
+                                                  color: Colors.red)),
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -285,16 +287,16 @@ class _MobilePageState extends State<MobilePage> with TickerProviderStateMixin {
               onPressed: () async {
                 var url =
                     "https://www.chosic.com/wp-content/uploads/2020/06/United_States_Marine_Band_-_We_Wish_You_a_Merry_Christmas.mp3";
-                print('play');
-                print(" the lenght is ${messages.length.toString()}");
-                print(" the lenght is ${images.length.toString()}");
+                // print('play');
+                // print(" the lenght is ${messages.length.toString()}");
+                // print(" the lenght is ${images.length.toString()}");
 
                 if (_status == AnimationStatus.dismissed) {
                   _controller.forward();
                   await audioPlayer.play(UrlSource(url));
                 } else {
                   _controller.reverse();
-                  await audioPlayer.pause();
+                  // await audioPlayer.pause();
                 }
                 setState(() {
                   var rng = new Random();
